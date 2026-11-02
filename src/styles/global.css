@@ -59,8 +59,8 @@ body {
 /* --- landing ------------------------------------------------------------ */
 
 /*
-  Tre colonne attorno alla tavola: la data a sinistra, l'invito a destra, il tris
-  al centro a prendersi tutto lo spazio che resta. Sotto la soglia del telefono
+  Tre colonne attorno alla tavola: il marchio a sinistra, l'invito a destra, il
+  tris al centro a prendersi tutto lo spazio che resta. Sotto la soglia del telefono
   diventano una pila sola, nello stesso ordine in cui stanno nel documento.
 */
 .landing {
@@ -91,12 +91,15 @@ body {
   position: relative;
 }
 
-.landing__date {
+/*
+  Il marchio è già rosso nel file: non prende colore dal tema, solo la misura.
+  `height: auto` lascia che siano le proporzioni del PNG a decidere l'altezza,
+  qualunque larghezza gli tocchi.
+*/
+.landing__marchio {
   justify-self: end;
-  font-size: clamp(0.8125rem, 1.6vw, 1rem);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--tris-player-mark);
+  width: clamp(9rem, 18vw, 14rem);
+  height: auto;
 }
 
 .landing__cue {
@@ -116,7 +119,7 @@ body {
     gap: clamp(1.5rem, 6vw, 2.5rem);
   }
 
-  .landing__date,
+  .landing__marchio,
   .landing__cue {
     justify-self: center;
     max-width: none;

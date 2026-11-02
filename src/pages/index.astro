@@ -42,7 +42,16 @@ const rootTokens = Object.entries(themeStyle(getTheme(DEFAULT_THEME).manifest))
  * stile bundlato, e un `url()` dentro una variabile CSS si risolve rispetto al
  * foglio che la usa — la foto finirebbe cercata dentro `_astro/`.
  */
-const SFONDO = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/sfondo-paxia.jpg`;
+const PUBBLICO = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const SFONDO = `${PUBBLICO}/sfondo-paxia.jpg`;
+
+/**
+ * Il marchio, dallo stesso `public/`. È servito al doppio della misura con cui
+ * viene disegnato: `width` e `height` dichiarano quella finale, così il browser
+ * riserva il posto giusto prima di avere il file e la pagina non sobbalza.
+ */
+const PAXIENTA = `${PUBBLICO}/paxienta@2x.png`;
 ---
 
 <!doctype html>
@@ -69,9 +78,13 @@ const SFONDO = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/sfondo-paxia.jpg`
     <div hidden set:html={sprites} />
 
     <main class="landing">
-      <time class="landing__date" datetime={SITE_CONFIG.eventDateISO}>
-        {SITE_CONFIG.eventDate}
-      </time>
+      <img
+        class="landing__marchio"
+        src={PAXIENTA}
+        alt={SITE_CONFIG.marchioAlt}
+        width="350"
+        height="116"
+      />
 
       <GameShell
         client:load
